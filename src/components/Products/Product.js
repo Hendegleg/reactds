@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 export default function Product(props) {
   const [identid, setIdentId] = useState();
-  const [disabled, setquantit] = useState(1);
+  const [isdisabled, setIsDisabled] = useState(true);
+
+  const [quantity, setQuantity] = useState(1);
+
+  const handleValideClick = async () => {
+    setIsDisabled(!isdisabled);
+  };
+
   const { search, onAction } = props;
   const onidprod = (e) => {
     setIdentId(e.target.value);
@@ -10,14 +17,19 @@ export default function Product(props) {
     <div>
       <div>
         <label>Saisir l'identifiant du produit</label>
-        <input type="text" value={search} onChange={onidprod}></input>{" "}
+        <input type="text" value={search} onChange={onidprod} />
       </div>
       <div>
-        <button onClick={onAction}>Valider</button>{" "}
+        <button onClick={handleValideClick}>Valider</button>{" "}
       </div>
       <div>
         <label>Saisir la quantité</label>
-        <input type="text" value={search} onChange={setquantit}></input>{" "}
+        <input
+          type="text"
+          value={quantity}
+          disabled={isdisabled}
+          onChange={(e) => setQuantity(parseInt(e.target.value))}
+        />
       </div>
       <div>
         <button onClick={onAction}>Ajouter au panier</button>{" "}

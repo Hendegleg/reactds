@@ -28,9 +28,9 @@ const ProductScreen = () => {
     <div className="container">
       <Product
         onAction={filterList}
-        onidprod={(s) => {
-          setSearch(s);
-        }}
+        // onidprod={(s) => {
+        //   setSearch(s);
+        // }}
       />
     </div>
   );
